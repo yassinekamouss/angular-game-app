@@ -15,7 +15,6 @@ import {AdminDashboardComponent} from './components/admin/dashboard/dashboard.co
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full'},
     { path: 'login', component: LoginComponent},
-    {path: 'reset-password', component: ResetPasswordComponent},
     { path: 'reset-password', component: ResetPasswordComponent},
     {
         path: 'prof',
