@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +19,16 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
 
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  async login() {
-    try {
-      await signInWithEmailAndPassword(this.auth, this.email, this.password);
-      this.router.navigate(['/home']);
-    } catch (error: any) {
-      this.errorMessage = error.message;
-    }
+  onLogin() {
+    this.authService.login(this.email, this.password).subscribe({
+      next: (user: any) => {
+        this.router.navigate(['/dashboard']); 
+      },
+      error: (err) => {
+        this.errorMessage = err.message;
+      }
+    });
   }
 }
