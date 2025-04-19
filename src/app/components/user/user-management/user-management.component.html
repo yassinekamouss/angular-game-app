@@ -1,0 +1,82 @@
+<div class="container">
+  <h2>Gestion des utilisateurs</h2>
+
+  <div class="alert" [class.alert-success]="!isError" [class.alert-danger]="isError" *ngIf="message">
+    {{ message }}
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <h3>Ajouter un utilisateur</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="userForm" (ngSubmit)="createUser()">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Mot de passe</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <div class="mb-3">
+          <label for="displayName" class="form-label">Nom d'affichage</label>
+          <input type="text" class="form-control" id="displayName" formControlName="displayName">
+        </div>
+        <div class="mb-3">
+          <label for="role" class="form-label">Rôle</label>
+          <select class="form-select" id="role" formControlName="role">
+            <option value="student">Étudiant</option>
+            <option value="teacher">Enseignant</option>
+            <option value="administrator">Administrateur</option>
+            <option value="parent">Parent</option>
+            <option value="principal">Principal</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid || loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+          Créer un utilisateur
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>Liste des utilisateurs</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border"></div>
+        <p>Chargement des utilisateurs...</p>
+      </div>
+
+      <table class="table" *ngIf="!loading && users.length > 0">
+        <thead>
+        <tr>
+          <th>Email</th>
+          <th>Nom</th>
+          <th>Rôle</th>
+          <th>Date de création</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.email }}</td>
+          <td>{{ user.displayName }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.createdAt | date:'medium' }}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteUser(user)">Supprimer</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="!loading && users.length === 0" class="text-center">
+        <p>Aucun utilisateur trouvé.</p>
+      </div>
+    </div>
+  </div>
+</div>

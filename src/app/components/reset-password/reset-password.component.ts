@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service'
+import { AuthService } from '../../services/auth/auth.service'
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -29,7 +29,7 @@ export class ResetPasswordComponent {
         this.alertMessage = 'Un lien de réinitialisation a été envoyé à votre adresse e-mail.';
         this.isAlertVisible = true;
         this.errorMessage = '';
-        
+
         // Masquer l'alerte après 8 secondes
         setTimeout(() => {
           this.isAlertVisible = false;
