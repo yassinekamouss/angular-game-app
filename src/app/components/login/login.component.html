@@ -1,7 +1,37 @@
-<h2>Login</h2>
-<form (submit)="onLogin()">
-    <input type="email" [(ngModel)]="email" name="email" placeholder="Email">
-    <input type="password" [(ngModel)]="password" name="password" placeholder="Password">
-    <button type="submit">Login</button>
-</form>
-<p *ngIf="errorMessage">{{ errorMessage }}</p>
+<div class="page-wrapper">
+    <!-- Header section -->
+    <header class="header">
+      <h1 class="app-title">MathéMagique</h1>
+      <p class="tagline">Apprendre les maths est un jeu d'enfant !</p>
+    </header>
+  
+    <!-- Main section -->
+    <section class="main-section">
+      <!-- Floating math elements -->
+      <div class="math-element">+</div>
+      <div class="math-element">÷</div>
+      <div class="math-element">×</div>
+      <div class="math-element">=</div>
+      <div class="math-element">π</div>
+      <div class="math-element">-</div>
+      
+      <!-- Login container -->
+      <div class="login-container">
+        <h2>Connexion</h2>
+        <p class="login-description">
+            Bienvenue sur l'espace de connexion. Entrez vos identifiants pour accéder à votre compte.
+        </p>
+        <form (submit)="onLogin()">
+          <input type="email" [(ngModel)]="email" name="email" placeholder="Email">
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe">
+          <button type="submit">Se connecter</button>
+        </form>
+        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+        
+        <div class="additional-links">
+          <a routerLink="/reset-password">Mot de passe oublié ?</a>
+        </div>
+      </div>
+    </section>
+    
+  </div>

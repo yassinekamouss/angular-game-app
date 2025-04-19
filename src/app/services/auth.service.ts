@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Auth, user } from "@angular/fire/auth";
 import { 
   browserSessionPersistence,
+  sendPasswordResetEmail,
   setPersistence, 
   signInWithEmailAndPassword, 
   signOut, 
@@ -39,6 +40,17 @@ export class AuthService {
   logout(): Observable<void> {
     return from(
       signOut(this.auth).then(() => sessionStorage.clear())
+    );
+  }
+
+  resetPassword(email: string): Observable<void> {
+    return from(
+      sendPasswordResetEmail(this.auth, email).then(() => {
+        console.log('Lien de réinitialisation envoyé à :', email);
+      }).catch((err) => {
+        console.error('Erreur lors de l\'envoi du lien :', err.message);
+        throw err;
+      })
     );
   }
   

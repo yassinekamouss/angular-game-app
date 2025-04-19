@@ -1,0 +1,13 @@
+ /* Pied de page */
+ .footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    width: 100%;
+  }
+  
+  .footer span {
+    color: var(--secondary-color);
+    font-weight: bold;
+  }
