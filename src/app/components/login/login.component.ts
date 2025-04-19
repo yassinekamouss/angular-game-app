@@ -7,11 +7,9 @@ import { AuthService } from '../../services/auth/auth.service';
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl : './login.component.html',
+  templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-
-
 export class LoginComponent {
   email = '';
   password = '';
@@ -26,7 +24,7 @@ export class LoginComponent {
       },
       error: (err) => {
         this.errorMessage = err.message;
-      }
+      },
     });
   }
 }

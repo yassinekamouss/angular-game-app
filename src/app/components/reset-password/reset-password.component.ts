@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   imports: [FormsModule, CommonModule, RouterModule],
-  styleUrls: ['./reset-password.component.css']
+  styleUrls: ['./reset-password.component.css'],
 })
 export class ResetPasswordComponent {
   email: string = '';
@@ -26,7 +26,8 @@ export class ResetPasswordComponent {
 
     this.authService.resetPassword(this.email).subscribe({
       next: () => {
-        this.alertMessage = 'Un lien de réinitialisation a été envoyé à votre adresse e-mail.';
+        this.alertMessage =
+          'Un lien de réinitialisation a été envoyé à votre adresse e-mail.';
         this.isAlertVisible = true;
         this.errorMessage = '';
 
@@ -37,7 +38,7 @@ export class ResetPasswordComponent {
       },
       error: (err) => {
         this.errorMessage = err.message;
-      }
+      },
     });
   }
 

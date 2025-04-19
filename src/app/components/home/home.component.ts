@@ -9,12 +9,10 @@ import { User } from 'firebase/auth';
   imports: [],
   standalone: true,
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
-
 export class HomeComponent {
-
-  user$ : Observable<User | null> ;
+  user$: Observable<User | null>;
 
   constructor(private authService: AuthService, private router: Router) {
     this.user$ = this.authService.user$;
@@ -27,8 +25,7 @@ export class HomeComponent {
       },
       error: (err) => {
         console.error('Logout failed:', err.message);
-      }
+      },
     });
   }
-
 }
