@@ -1,0 +1,26 @@
+<h2>Liste des Parents</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Email</th>
+    <th>Enfants</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let parent of parents">
+    <td>{{ parent.nom }}</td>
+    <td>{{ parent.prenom }}</td>
+    <td>{{ parent.email }}</td>
+    <td>
+      <ul>
+        <li *ngFor="let enfant of parent.enfants">
+          {{ enfant.nom }} ({{ enfant.classe }})
+        </li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
