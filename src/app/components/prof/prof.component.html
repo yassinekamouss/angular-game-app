@@ -1,0 +1,50 @@
+<div class="dashboard-container">
+    <!-- Floating Math Symbols -->
+    <div class="math-symbol"></div>
+    <div class="math-symbol"></div>
+    <div class="math-symbol"></div>
+    <div class="math-symbol"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile-section">
+        <div class="profile-image">
+          <img src="assets/images/avatar.jpg" alt="Profile">
+        </div>
+        <h3 class="teacher-name">M. Dupont</h3>
+        <p class="teacher-subject">Mathématiques</p>
+      </div>
+  
+      <nav class="sidebar-nav">
+        <button class="nav-button" routerLink="/prof/dashboard" routerLinkActive="active">
+          <i class="fas fa-home"></i>
+          Tableau de bord
+        </button>
+        
+        <button class="nav-button" routerLink="/prof/classes" routerLinkActive="active" (click)="getClasses()">
+          <i class="fas fa-users"></i>
+          Mes Classes
+        </button>
+  
+        <button class="nav-button" routerLink="/prof/tests" routerLinkActive="active">
+          <i class="fas fa-tasks"></i>
+          Tests
+        </button>
+  
+        <button class="nav-button" routerLink="/prof/settings" routerLinkActive="active">
+          <i class="fas fa-cog"></i>
+          Paramètres
+        </button>
+      </nav>
+  
+      <button class="logout-button" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        Déconnexion
+      </button>
+    </aside>
+  
+    <!-- Main Content -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
