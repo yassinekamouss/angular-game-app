@@ -1,3 +1,4 @@
+
 export interface Student {
     id: number;
     name: string;
@@ -6,3 +7,4 @@ export interface Student {
     birthDate: string;
     linkedTeacherId: string;
   }
+

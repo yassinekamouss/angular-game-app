@@ -1,0 +1,94 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  animation: slideIn 0.3s ease-out;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.modal h3 {
+  margin-bottom: 1.2rem;
+  color: #333;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+form label {
+  display: block;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+form input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  outline: none;
+  transition: border-color 0.3s;
+  font-size: 1rem;
+}
+
+form input:focus {
+  border-color: #4a90e2;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.6rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  margin-right: 0.5rem;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+button[type="button"]:hover {
+  background-color: #d32f2f;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}
