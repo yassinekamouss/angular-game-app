@@ -7,8 +7,9 @@
     <nav class="sidebar-nav">
       <ul>
         <li><a routerLink="/admin/dashboard" routerLinkActive="active">Tableau de bord</a></li>
-        <li><a routerLink="/admin/classes" routerLinkActive="active">Classes</a></li>
-        <li><a routerLink="/admin/parents" routerLinkActive="active">Parents</a></li>
+        <li><a routerLink="/admin/classes" routerLinkActive="active" (click)="getClasses()">Classes</a></li>
+        <li><a routerLink="/admin/parents" routerLinkActive="active" >Parents</a></li>
+        <li><a routerLink="/admin/professeurs" routerLinkActive="active" >Professeurs</a></li>
         <li><a routerLink="/admin/reports" routerLinkActive="active">Générer des rapports</a></li>
         <li><a (click)="onLogout(); $event.preventDefault()">Déconnexion</a></li>
       </ul>

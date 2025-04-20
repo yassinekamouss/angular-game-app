@@ -1,0 +1,25 @@
+<h2>Liste des Professeurs</h2>
+<button (click)="showModal = true">Ajouter un Professeur</button>
+
+<app-add-prof
+  *ngIf="showModal"
+  (ajouter)="ajouterProfesseur($event)"
+  (fermer)="showModal = false">
+</app-add-prof>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let professeur of professeurs">
+    <td>{{ professeur.nom }}</td>
+    <td>{{ professeur.prenom }}</td>
+    <td>{{ professeur.email }}</td>
+  </tr>
+  </tbody>
+</table>

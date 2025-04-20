@@ -10,6 +10,7 @@ import {AdminComponent} from './components/admin/admin.component';
 import {ParentsComponent} from './components/admin/parents/parents.component';
 import {RapportsComponent} from './components/admin/rapports/rapports.component';
 import {AdminDashboardComponent} from './components/admin/dashboard/dashboard.component';
+import {ProfesseursComponent} from './components/admin/professeurs/professeurs.component';
 
 
 export const routes: Routes = [
@@ -33,8 +34,10 @@ export const routes: Routes = [
     children: [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {path:'dashboard' , component: AdminDashboardComponent},
+      { path: 'classes', component: ClassesComponent},
       {path: 'parents', component: ParentsComponent},
-      {path: 'reports', component: RapportsComponent}
+      {path: 'reports', component: RapportsComponent},
+      {path: 'professeurs' , component: ProfesseursComponent}
     ]
   }
 ];
