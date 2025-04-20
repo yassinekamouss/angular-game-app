@@ -1,0 +1,271 @@
+/* Variables */
+:host {
+  --primary-color: #4a6cd1;
+  --secondary-color: #ff7e5f;
+  --accent-color: #32cd32;
+  --background-color: #f9f9ff;
+  --shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Container Styles */
+.students-container {
+  padding: 2rem;
+  position: relative;
+}
+
+/* Header Section */
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(74, 108, 209, 0.1);
+}
+
+.header-section h1 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.teacher-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.grade-badge, .subject-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.grade-badge {
+  background: var(--accent-color);
+  color: white;
+}
+
+.subject-badge {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Search Section */
+.search-section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-box {
+  flex: 1;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 20px 12px 45px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-box i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.search-box input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 108, 209, 0.1);
+}
+
+.filter-box select {
+  padding: 12px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-box select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 108, 209, 0.1);
+}
+
+/* Students Grid */
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Student Card */
+.student-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+}
+
+.student-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.student-avatar {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.student-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-info h3 {
+  color: var(--primary-color);
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Student Details */
+.student-details {
+  margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  color: #666;
+}
+
+.detail-item i {
+  color: var(--primary-color);
+  width: 20px;
+  text-align: center;
+}
+
+/* Action Buttons */
+.student-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.action-button {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.action-button.view {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.action-button.edit {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Math Symbols Animation */
+.math-symbol {
+  position: fixed;
+  font-size: 30px;
+  opacity: 0.08;
+  animation: float 10s infinite ease-in-out;
+  z-index: 0;
+}
+
+.math-symbol:nth-child(1) {
+  top: 15%;
+  left: 15%;
+  content: "÷";
+  animation-delay: 0s;
+}
+
+.math-symbol:nth-child(2) {
+  top: 25%;
+  right: 15%;
+  content: "−";
+  animation-delay: 2s;
+}
+
+.math-symbol:nth-child(3) {
+  bottom: 20%;
+  left: 10%;
+  content: "∞";
+  animation-delay: 1s;
+}
+
+.math-symbol:nth-child(4) {
+  bottom: 15%;
+  right: 20%;
+  content: "≈";
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .search-section {
+    flex-direction: column;
+  }
+  
+  .students-grid {
+    grid-template-columns: 1fr;
+  }
+}

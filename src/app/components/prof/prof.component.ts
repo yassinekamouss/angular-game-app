@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './prof.component.html',
   styleUrls: ['./prof.component.css']
 })
+
 export class ProfComponent {
   constructor(
     private authService: AuthService, 
@@ -29,14 +30,4 @@ export class ProfComponent {
     });
   }
 
-  getClasses() {
-    this.classesService.getClasses().subscribe({
-      next: (classes) => {
-        console.log('Classes loaded in prof component:', classes);
-      },
-      error: (err) => {
-        console.error('Error loading classes:', err);
-      }
-    });
-  }
 }
