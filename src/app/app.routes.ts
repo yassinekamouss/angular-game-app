@@ -3,13 +3,13 @@ import { LoginComponent } from './components/login/login.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ProfComponent } from './components/prof/prof.component';
 import { DashboardComponent } from './components/prof/dashboard/dashboard.component';
-import { ClassesComponent } from './components/shared/classes/classes.component';
 import { TestsComponent } from './components/prof/tests/tests.component';
 import { SettingsComponent } from './components/prof/settings/settings.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {ParentsComponent} from './components/admin/parents/parents.component';
 import {RapportsComponent} from './components/admin/rapports/rapports.component';
 import {AdminDashboardComponent} from './components/admin/dashboard/dashboard.component';
+import { StudentsComponent } from './components/prof/students/students.component';
 
 
 export const routes: Routes = [
@@ -22,7 +22,7 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent},
-            { path: 'classes', component: ClassesComponent},
+            { path: 'students', component: StudentsComponent},
             { path: 'tests', component: TestsComponent},
             { path: 'settings', component: SettingsComponent}
         ]
