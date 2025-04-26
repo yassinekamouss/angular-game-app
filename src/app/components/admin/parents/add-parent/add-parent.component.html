@@ -1,0 +1,72 @@
+<div class="modal-background">
+  <div class="modal">
+    <h3>Ajouter un Parent</h3>
+
+    <!-- Étape 1: Informations personnelles -->
+    <div *ngIf="currentStep === 1" class="step-content">
+      <h4>Étape 1: Informations personnelles</h4>
+      <form>
+        <div class="form-group">
+          <label for="firstName">Nom:</label>
+          <input id="firstName" [(ngModel)]="newParent.firstName" name="firstName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Prénom:</label>
+          <input id="lastName" [(ngModel)]="newParent.lastName" name="lastName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" type="email" [(ngModel)]="newParent.email" name="email" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" (click)="nextStep()" [disabled]="!isStep1Valid()">Suivant</button>
+          <button type="button" class="cancel-btn" (click)="closeModal()">Annuler</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Étape 2: Association des enfants -->
+    <div *ngIf="currentStep === 2" class="step-content">
+      <h4>Étape 2: Association des enfants</h4>
+
+      <div class="selected-students">
+        <h5>Enfants sélectionnés:</h5>
+        <div *ngIf="selectedStudents.length === 0" class="empty-selection">
+          Aucun enfant sélectionné
+        </div>
+        <ul class="student-chips">
+          <li *ngFor="let student of selectedStudents" class="student-chip">
+            {{ student.name }}
+            <button type="button" class="remove-btn" (click)="removeStudent(student)">×</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="student-selection">
+        <h5>Ajouter un enfant:</h5>
+        <div class="search-container">
+          <input type="text" [(ngModel)]="studentSearchText" name="studentSearch" placeholder="Rechercher un élève..."
+                 (input)="filterStudents()">
+        </div>
+
+        <div class="students-list">
+          <div *ngFor="let student of filteredStudents"
+               class="student-item"
+               [class.selected]="isStudentSelected(student)"
+               (click)="toggleStudent(student)">
+            <span>{{ student.name }} </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" (click)="previousStep()">Précédent</button>
+        <button type="button" (click)="submitForm()" [disabled]="selectedStudents.length === 0">Enregistrer</button>
+        <button type="button" class="cancel-btn" (click)="closeModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

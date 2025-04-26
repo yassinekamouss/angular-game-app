@@ -1,23 +1,52 @@
-<!-- components/admin/admin.component.html -->
-<div class="admin-container">
+<div class="dashboard-container">
+  <!-- Floating Math Symbols -->
+  <div class="math-symbol"></div>
+  <div class="math-symbol"></div>
+  <div class="math-symbol"></div>
+  <div class="math-symbol"></div>
+
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="sidebar-header">
-      <h3>Administration</h3>
+    <div class="profile-section">
+      <div class="profile-image">
+        <img src="assets/images/avatar.jpg" alt="Profile">
+      </div>
+      <h3 class="teacher-name">Admin Principal</h3>
+      <p class="teacher-subject">Gestion du système</p>
     </div>
+
     <nav class="sidebar-nav">
-      <ul>
-        <li><a routerLink="/admin/dashboard" routerLinkActive="active">Tableau de bord</a></li>
-        <li><a routerLink="/admin/classes" routerLinkActive="active" (click)="getClasses()">Classes</a></li>
-        <li><a routerLink="/admin/parents" routerLinkActive="active" >Parents</a></li>
-        <li><a routerLink="/admin/professeurs" routerLinkActive="active" >Professeurs</a></li>
-        <li><a routerLink="/admin/reports" routerLinkActive="active">Générer des rapports</a></li>
-        <li><a (click)="onLogout(); $event.preventDefault()">Déconnexion</a></li>
-      </ul>
+      <button class="nav-button" routerLink="/admin/dashboard" routerLinkActive="active">
+        <i class="fas fa-home"></i>
+        Tableau de bord
+      </button>
+
+      <button class="nav-button" routerLink="/admin/parents" routerLinkActive="active">
+        <i class="fas fa-user-cog"></i>
+        Gestion des parents
+      </button>
+
+      <button class="nav-button" routerLink="/admin/professeurs" routerLinkActive="active">
+        <i class="fas fa-cogs"></i>
+        Gestion des profs
+      </button>
+
+      <button class="nav-button" routerLink="/admin/reports" routerLinkActive="active">
+        <i class="fas fa-chart-line"></i>
+        Rapports
+      </button>
+
+
     </nav>
+
+    <button class="logout-button" (click)="onLogout(); $event.preventDefault()">
+      <i class="fas fa-sign-out-alt"></i>
+      Déconnexion
+    </button>
   </aside>
 
-  <main class="content">
+  <!-- Main Content -->
+  <main class="main-content">
     <router-outlet></router-outlet>
   </main>
 </div>
-

@@ -8,6 +8,7 @@ import { Student } from '../../models/student';
 })
 export class StudentService {
   private apiUrl = 'assets/json_db/users.json';
+  private  students:Student[] =[];
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +22,7 @@ export class StudentService {
           const user = users[uid];
           if (user.role === 'Student') {
             const student: Student = {
-              id: parseInt(uid.replace(/\D/g, '')) || 0,
+              id: uid,
               name: `${user.firstName} ${user.lastName}`,
               schoolGrade: user.schoolGrade?.toString() ?? '',
               mathLevel: 'Intermédiaire', // par défaut
@@ -31,6 +32,7 @@ export class StudentService {
             students.push(student);
           }
         }
+        this.students=students;
 
         return students;
       })
@@ -42,5 +44,9 @@ export class StudentService {
             .pipe(
               map(students => students.filter(student => student.linkedTeacherId === teacherId))
             );
+  }
+
+  getStudentById(id: string): Student | undefined {
+    return this.students.find(student => student.id === id);
   }
 }

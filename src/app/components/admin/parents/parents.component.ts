@@ -1,19 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {NgModel} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ParentsService} from '../../../services/parents/parents.service';
 import {Parent} from '../../../models/parent';
+import {FormsModule} from '@angular/forms';
+import {AddParentComponent} from './add-parent/add-parent.component';
+import {FilterParentsPipe} from '../../../pipes/parent/filter-parents.pipe';
 
 @Component({
   selector: 'app-parents',
-  imports: [CommonModule],
+  imports: [CommonModule,
+          FormsModule,
+          AddParentComponent,
+          FilterParentsPipe
+
+  ],
   templateUrl: './parents.component.html',
   styleUrls: ['./parents.component.css'],
   standalone:true
 })
 export class ParentsComponent implements OnInit{
 
-parents :Parent[] = [];
+  parents :Parent[] = [];
+  showModal: boolean = false;
+  searchText :string = '';
   constructor(private parentsService: ParentsService) {
   }
 ngOnInit() {
@@ -27,5 +36,11 @@ ngOnInit() {
     }
   });
 }
+
+ajouterParent(parent: Parent){
+    this.parentsService.addParent(parent);
+    this.showModal=false;
+}
+
 
 }

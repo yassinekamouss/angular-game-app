@@ -2,9 +2,10 @@
   <div class="modal">
     <h3>Ajouter un Professeur</h3>
     <form (ngSubmit)="submitForm()">
-      <label>Nom: <input [(ngModel)]="newProf.nom" name="nom" required></label><br>
-      <label>Prénom: <input [(ngModel)]="newProf.prenom" name="prenom" required></label><br>
+      <label>Nom: <input [(ngModel)]="newProf.firstName" name="nom" required></label><br>
+      <label>Prénom: <input [(ngModel)]="newProf.lastName" name="prenom" required></label><br>
       <label>Email: <input [(ngModel)]="newProf.email" name="email" required></label><br>
+      <label>School: <input [(ngModel)]="newProf.school" name="school" required></label><br>
       <button type="submit">Ajouter</button>
       <button type="button" (click)="closeModal()">Annuler</button>
     </form>

@@ -1,26 +1,68 @@
-<h2>Liste des Parents</h2>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Nom</th>
-    <th>Prénom</th>
-    <th>Email</th>
-    <th>Enfants</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let parent of parents">
-    <td>{{ parent.nom }}</td>
-    <td>{{ parent.prenom }}</td>
-    <td>{{ parent.email }}</td>
-    <td>
-      <ul>
-        <li *ngFor="let enfant of parent.enfants">
-          {{ enfant.nom }} ({{ enfant.classe }})
-        </li>
-      </ul>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<!-- Floating Math Symbols (si tu veux les garder aussi ici) -->
+<div class="math-symbol"></div>
+<div class="math-symbol"></div>
+<div class="math-symbol"></div>
+<div class="math-symbol"></div>
 
+<div class="students-container"> <!-- Réutilise la classe container -->
+
+
+  <div class="header-section">
+  <h1>Gestion des Parents</h1>
+  <div class="teacher-info">
+    <div class="grade-badge">Grade : Super Parent</div>
+    <div class="subject-badge">Gestion Parent</div>
+  </div>
+</div>
+
+  <div class="search-section">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Rechercher par nom ou email..." [(ngModel)]="searchText" />
+    </div>
+    <div class="filter-box">
+      <button class="action-button view" (click)="showModal = true">+ Ajouter un Parent</button>
+    </div>
+  </div>
+
+
+<!-- Modal pour ajouter un parent -->
+<app-add-parent
+  *ngIf="showModal"
+  (ajouter)="ajouterParent($event)"
+  (fermer)="showModal = false">
+</app-add-parent>
+
+<div class="students-grid">
+  <div class="student-card" *ngFor="let parent of parents | filterParents:searchText">
+    <div class="student-header">
+      <div class="student-avatar">
+        <img src="assets/images/avatar.jpg" alt="Avatar" />
+      </div>
+      <div class="student-info">
+        <h3>{{ parent.firstName }} {{ parent.lastName }}</h3>
+      </div>
+    </div>
+
+    <div class="student-details">
+      <div class="detail-item">
+        <i class="fas fa-envelope"></i>
+        <span>{{ parent.email }}</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-child"></i>
+        <span><strong>Nombre des Enfants :</strong> {{ parent.linkedStudentIds.length }}</span>
+      </div>
+    </div>
+
+    <div class="student-actions">
+      <button class="action-button view">
+        <i class="fas fa-eye"></i> Voir Détails
+      </button>
+      <button class="action-button edit">
+        <i class="fas fa-edit"></i> Modifier
+      </button>
+    </div>
+  </div>
+</div>
+</div>

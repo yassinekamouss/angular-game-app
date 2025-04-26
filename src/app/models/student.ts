@@ -1,6 +1,6 @@
 
 export interface Student {
-    id: number;
+    id: string;
     name: string;
     schoolGrade: string;
     mathLevel: string;

@@ -1,25 +1,67 @@
-<h2>Liste des Professeurs</h2>
-<button (click)="showModal = true">Ajouter un Professeur</button>
+<!-- Floating Math Symbols (si tu veux les garder aussi ici) -->
+<div class="math-symbol"></div>
+<div class="math-symbol"></div>
+<div class="math-symbol"></div>
+<div class="math-symbol"></div>
 
-<app-add-prof
-  *ngIf="showModal"
-  (ajouter)="ajouterProfesseur($event)"
-  (fermer)="showModal = false">
-</app-add-prof>
+<div class="students-container"> <!-- Réutilise la classe container -->
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Nom</th>
-    <th>Prénom</th>
-    <th>Email</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let professeur of professeurs">
-    <td>{{ professeur.nom }}</td>
-    <td>{{ professeur.prenom }}</td>
-    <td>{{ professeur.email }}</td>
-  </tr>
-  </tbody>
-</table>
+  <!-- Header Section -->
+  <div class="header-section">
+    <h1>Liste des Professeurs</h1>
+    <div class="teacher-info">
+      <span class="grade-badge">Admin</span>
+      <span class="subject-badge">Gestion</span>
+    </div>
+  </div>
+
+  <!-- Search & Add -->
+  <div class="search-section">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Rechercher par nom ou email..." [(ngModel)]="searchText" />
+    </div>
+    <div class="filter-box">
+      <button class="action-button view" (click)="showModal = true">+ Ajouter un Professeur</button>
+    </div>
+  </div>
+
+  <!-- Modal Component -->
+  <app-add-prof
+    *ngIf="showModal"
+    (ajouter)="ajouterProfesseur($event)"
+    (fermer)="showModal = false">
+  </app-add-prof>
+
+  <!-- Prof Grid -->
+  <div class="students-grid">
+    <div class="student-card" *ngFor="let professeur of professeurs | filterProf:searchText">
+      <div class="student-header">
+        <div class="student-avatar">
+          <img src="assets/images/avatar.jpg" alt="Avatar" />
+        </div>
+        <div class="student-info">
+          <h3>{{ professeur.firstName }} {{ professeur.lastName }}</h3>
+        </div>
+      </div>
+
+      <div class="student-details">
+        <div class="detail-item">
+          <i class="fas fa-envelope"></i>
+          <span>Email : {{ professeur.email }}</span>
+        </div>
+
+      </div>
+      <div class="student-actions">
+        <button class="action-button view">
+          <i class="fas fa-eye"></i>
+          Voir le profil
+        </button>
+        <button class="action-button edit">
+          <i class="fas fa-edit"></i>
+          Modifier
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Professeur } from '../../../../models/professeur';
+import { Teacher } from '../../../../models/teacher';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -12,18 +12,19 @@ import {FormsModule} from '@angular/forms';
   standalone:true
 })
 export class AddProfComponent {
-  newProf: Professeur = {
-    id: 0,
-    nom: '',
-    prenom: '',
-    email: ''
+  newProf: Teacher = {
+    uid: "0",
+    firstName: '',
+    lastName: '',
+    email: '',
+    school: ''
   };
 
-  @Output() ajouter = new EventEmitter<Professeur>();
+  @Output() ajouter = new EventEmitter<Teacher>();
   @Output() fermer = new EventEmitter<void>();
 
   submitForm() {
-    if (this.newProf.nom && this.newProf.prenom && this.newProf.email) {
+    if (this.newProf.firstName && this.newProf.lastName && this.newProf.email) {
       this.ajouter.emit(this.newProf);
     }
   }
@@ -31,8 +32,5 @@ export class AddProfComponent {
   closeModal() {
     this.fermer.emit();
   }
-
-
-
 
 }
