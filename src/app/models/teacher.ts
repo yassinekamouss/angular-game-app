@@ -4,4 +4,5 @@ export interface Teacher{
   lastName:string;
   email:string;
   school:string;
+  grade:string;
 }

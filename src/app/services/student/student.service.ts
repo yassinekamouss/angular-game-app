@@ -49,4 +49,10 @@ export class StudentService {
   getStudentById(id: string): Student | undefined {
     return this.students.find(student => student.id === id);
   }
+
+  addStudent(student: Student): void {
+    student.id = Date.now().toString();
+    this.students.push(student);
+  }
+
 }

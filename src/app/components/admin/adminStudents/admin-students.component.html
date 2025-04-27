@@ -4,13 +4,12 @@
 <div class="math-symbol"></div>
 <div class="math-symbol"></div>
 
-<div class="students-container"> <!-- Réutilise la classe container -->
+<div class="students-container">
 
-  <!-- Header Section -->
   <div class="header-section">
-    <h1>Liste des Professeurs</h1>
+    <h1>Liste des etudiants</h1>
     <div class="teacher-info">
-      <span class="grade-badge">Admin</span>
+      <span class="grade-badge">Eleves</span>
       <span class="subject-badge">Gestion</span>
     </div>
   </div>
@@ -19,40 +18,40 @@
   <div class="search-section">
     <div class="search-box">
       <i class="fas fa-search"></i>
-      <input type="text" placeholder="Rechercher par nom ou email..." [(ngModel)]="searchText" />
+      <input type="text" placeholder="Rechercher par nom ou grade..." [(ngModel)]="searchText" />
     </div>
     <div class="filter-box">
-      <button class="action-button view" (click)="showModal = true">+ Ajouter un Professeur</button>
+      <button class="action-button view" (click)="showModal = true">+ Ajouter un etudiant</button>
     </div>
   </div>
 
   <!-- Modal Component -->
-  <app-add-prof
+  <app-admin-add-students
     *ngIf="showModal"
-    (ajouter)="ajouterProfesseur($event)"
+    (ajouter)="addStudent($event)"
     (fermer)="showModal = false">
-  </app-add-prof>
+  </app-admin-add-students>
 
   <!-- Prof Grid -->
   <div class="students-grid">
-    <div class="student-card" *ngFor="let professeur of professeurs | filterProf:searchText">
+    <div class="student-card" *ngFor="let student of students | filterStudent:searchText">
       <div class="student-header">
         <div class="student-avatar">
           <img src="assets/images/avatar.jpg" alt="Avatar" />
         </div>
         <div class="student-info">
-          <h3>{{ professeur.firstName }} {{ professeur.lastName }}</h3>
+          <h3>{{ student.name }} </h3>
         </div>
       </div>
 
       <div class="student-details">
         <div class="detail-item">
           <i class="fas fa-envelope"></i>
-          <span>Email : {{ professeur.email }}</span>
+          <span>anniversaire : {{ student.birthDate }}</span>
         </div>
         <div class="detail-item">
           <i class="fas fa-envelope"></i>
-          <span>Grade : {{ professeur.grade }}</span>
+          <span>Grade : {{ student.schoolGrade }}</span>
         </div>
 
       </div>

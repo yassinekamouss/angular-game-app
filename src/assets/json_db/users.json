@@ -14,7 +14,7 @@
         "role": "Student",
         "firstName": "Yassine",
         "lastName": "Kamouss",
-        "birthday": "2001-07-26T00:00:00.000Z",
+        "birthday": "2001-07-26",
         "gender": "Male",
         "schoolGrade": 6,
         "linkedTeacherId": "uid_789"
@@ -33,7 +33,8 @@
         "role": "Teacher",
         "firstName": "Younes",
         "lastName": "El Idrissi",
-        "school": "Tangier Science Academy"
+        "school": "Tangier Science Academy",
+        "grade": "1"
       },
       "uid_999": {
         "uid": "uid_999",
@@ -52,7 +53,7 @@
         "role": "Student",
         "firstName": "Najlae",
         "lastName": "Abarghache",
-        "birthday": "2001-07-26T00:00:00.000Z",
+        "birthday": "2001-07-26",
         "gender": "Female",
         "schoolGrade": 6,
         "linkedTeacherId": "uid_789"

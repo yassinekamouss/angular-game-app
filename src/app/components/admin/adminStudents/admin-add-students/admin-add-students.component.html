@@ -1,0 +1,75 @@
+<div class="modal-background">
+  <div class="modal">
+    <h3>Ajouter un étudiant</h3>
+
+    <!-- Étape 1: Informations personnelles -->
+    <div *ngIf="currentStep === 1" class="step-content">
+      <h4>Étape 1: Informations personnelles</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Nom:</label>
+          <input id="name" [(ngModel)]="newStudent.name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="birthDate">Date de naissance:</label>
+          <input type="date" id="birthDate" [(ngModel)]="newStudent.birthDate" name="birthDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="schoolGrade">Niveau scolaire:</label>
+          <input id="schoolGrade" [(ngModel)]="newStudent.schoolGrade" name="schoolGrade" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mathLevel">Niveau en mathématiques:</label>
+          <input id="mathLevel"  [(ngModel)]="newStudent.mathLevel" name="mathLevel" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" (click)="nextStep()" [disabled]="!isStep1Valid()">Suivant</button>
+          <button type="button" class="cancel-btn" (click)="closeModal()">Annuler</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Étape 2: Attribution d'enseignant -->
+    <div *ngIf="currentStep === 2" class="step-content">
+      <h4>Étape 2: Attribution d'enseignant</h4>
+
+      <div class="selected-teacher">
+        <h5>Enseignant sélectionné :</h5>
+        <div *ngIf="!selectedTeacher" class="empty-selection">
+          Aucun enseignant sélectionné
+        </div>
+        <div *ngIf="selectedTeacher" class="teacher-chip">
+          {{ selectedTeacher.firstName }} {{ selectedTeacher.lastName }}
+          <button type="button" class="remove-btn" (click)="removeTeacher()">×</button>
+        </div>
+      </div>
+
+      <div class="teacher-selection">
+        <h5>Choisir un enseignant :</h5>
+        <div class="search-container">
+          <input type="text" [(ngModel)]="teacherSearchText" name="teacherSearch" placeholder="Rechercher un enseignant..."
+                 (input)="filterTeachers()">
+        </div>
+
+        <div class="teachers-list">
+          <div *ngFor="let teacher of filteredTeachers"
+               class="teacher-item"
+               [class.selected]="isTeacherSelected(teacher)"
+               (click)="selectTeacher(teacher)">
+            <span>{{ teacher.firstName }} {{ teacher.lastName }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" (click)="previousStep()">Précédent</button>
+        <button type="button" (click)="submitForm()" [disabled]="!selectedTeacher">Enregistrer</button>
+        <button type="button" class="cancel-btn" (click)="closeModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

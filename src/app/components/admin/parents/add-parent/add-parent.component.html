@@ -21,6 +21,7 @@
           <input id="email" type="email" [(ngModel)]="newParent.email" name="email" required>
         </div>
 
+
         <div class="form-actions">
           <button type="button" (click)="nextStep()" [disabled]="!isStep1Valid()">Suivant</button>
           <button type="button" class="cancel-btn" (click)="closeModal()">Annuler</button>

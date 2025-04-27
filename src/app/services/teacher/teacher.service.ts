@@ -17,6 +17,9 @@ export class TeacherService {
 
   constructor(private http: HttpClient) {}
 
+
+
+
   getTeacherById(teacherId: string): Observable<Teacher> {
     return this.http.get<any>(this.apiUrl).pipe(
       map(data => {
@@ -33,4 +36,4 @@ export class TeacherService {
       })
     );
   }
-} 
+}

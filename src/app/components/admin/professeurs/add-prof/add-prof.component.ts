@@ -17,14 +17,16 @@ export class AddProfComponent {
     firstName: '',
     lastName: '',
     email: '',
-    school: ''
+    school: '',
+    grade:''
   };
 
   @Output() ajouter = new EventEmitter<Teacher>();
   @Output() fermer = new EventEmitter<void>();
 
   submitForm() {
-    if (this.newProf.firstName && this.newProf.lastName && this.newProf.email) {
+    if (this.newProf.firstName && this.newProf.lastName
+      && this.newProf.email && this.newProf.grade) {
       this.ajouter.emit(this.newProf);
     }
   }

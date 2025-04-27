@@ -29,8 +29,8 @@ export class ProfesseursService {
               firstName: `${user.firstName}`,
               lastName:`${user.lastName}`,
               email : user.email,
-              school: user.school
-
+              school: user.school,
+              grade:user.grade
             };
             teachers.push(teacher);
           }

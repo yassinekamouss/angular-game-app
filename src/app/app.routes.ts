@@ -11,6 +11,7 @@ import {RapportsComponent} from './components/admin/rapports/rapports.component'
 import {AdminDashboardComponent} from './components/admin/dashboard/dashboard.component';
 import { StudentsComponent } from './components/prof/students/students.component';
 import {ProfesseursComponent} from './components/admin/professeurs/professeurs.component';
+import {AdminStudentsComponent} from './components/admin/adminStudents/admin-students.component';
 
 
 
@@ -36,8 +37,9 @@ export const routes: Routes = [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {path:'dashboard' , component: AdminDashboardComponent},
       {path: 'parents', component: ParentsComponent},
-      {path: 'reports', component: RapportsComponent},
-      {path: 'professeurs' , component: ProfesseursComponent}
+      {path: 'reports',  component: RapportsComponent},
+      {path: 'professeurs' , component: ProfesseursComponent},
+      {path: 'students' , component: AdminStudentsComponent}
     ]
   }
 ];
