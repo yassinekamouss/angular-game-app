@@ -39,7 +39,6 @@ export class AdminStudentsComponent implements OnInit{
     })
   }
 
-
   addStudent(student: Student){
     this.studentService.addStudent(student);
     this.showModal=false;

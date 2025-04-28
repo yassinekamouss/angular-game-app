@@ -1,0 +1,46 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Détails du Parent</h2>
+      <button class="close-button" (click)="closeModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="modal-body" *ngIf="parent">
+      <div class="parent-avatar">
+        <img src="assets/images/avatar.jpg" alt="Avatar" />
+      </div>
+
+      <div class="parent-info">
+        <h3>{{ parent.firstName }} {{ parent.lastName }}</h3>
+
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <span>{{ parent.email }}</span>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-id-card"></i>
+          <span>UID: {{ parent.uid }}</span>
+        </div>
+      </div>
+
+      <div class="linked-students">
+        <h4>Enfants liés ({{ parent.linkedStudentIds.length }})</h4>
+        <ul>
+          <li *ngFor="let studentId of parent.linkedStudentIds">
+            ID de l'élève: {{ studentId }}
+          </li>
+          <li *ngIf="parent.linkedStudentIds.length === 0">
+            Aucun élève lié à ce parent
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="action-button cancel" (click)="closeModal()">Fermer</button>
+    </div>
+  </div>
+</div>

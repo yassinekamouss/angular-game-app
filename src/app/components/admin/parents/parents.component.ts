@@ -5,14 +5,15 @@ import {Parent} from '../../../models/parent';
 import {FormsModule} from '@angular/forms';
 import {AddParentComponent} from './add-parent/add-parent.component';
 import {FilterParentsPipe} from '../../../pipes/parent/filter-parents.pipe';
+import {SeeDetailsParentComponent} from './see-details-parent/see-details-parent.component';
 
 @Component({
   selector: 'app-parents',
   imports: [CommonModule,
           FormsModule,
           AddParentComponent,
-          FilterParentsPipe
-
+          FilterParentsPipe,
+          SeeDetailsParentComponent
   ],
   templateUrl: './parents.component.html',
   styleUrls: ['./parents.component.css'],
@@ -21,8 +22,10 @@ import {FilterParentsPipe} from '../../../pipes/parent/filter-parents.pipe';
 export class ParentsComponent implements OnInit{
 
   parents :Parent[] = [];
-  showModal: boolean = false;
+  showAddModal: boolean = false;
+  showDetailsModal: boolean = false;
   searchText :string = '';
+  selectedParentId: string = '';
   constructor(private parentsService: ParentsService) {
   }
 ngOnInit() {
@@ -39,8 +42,12 @@ ngOnInit() {
 
 ajouterParent(parent: Parent){
     this.parentsService.addParent(parent);
-    this.showModal=false;
+    this.showAddModal=false;
 }
 
+  seeDetailsofParent(parent: Parent) {
+    this.selectedParentId = parent.uid;
+    this.showDetailsModal = true;
+  }
 
 }

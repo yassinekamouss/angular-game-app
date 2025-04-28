@@ -21,17 +21,23 @@
       <input type="text" placeholder="Rechercher par nom ou email..." [(ngModel)]="searchText" />
     </div>
     <div class="filter-box">
-      <button class="action-button view" (click)="showModal = true">+ Ajouter un Parent</button>
+      <button class="action-button view" (click)="showAddModal  = true">+ Ajouter un Parent</button>
     </div>
   </div>
 
 
 <!-- Modal pour ajouter un parent -->
 <app-add-parent
-  *ngIf="showModal"
+  *ngIf="showAddModal "
   (ajouter)="ajouterParent($event)"
-  (fermer)="showModal = false">
+  (fermer)="showAddModal  = false">
 </app-add-parent>
+
+  <app-see-details-parent
+    *ngIf="showDetailsModal"
+    [parentId]="selectedParentId"
+    (fermer)="showDetailsModal = false">
+  </app-see-details-parent>
 
 <div class="students-grid">
   <div class="student-card" *ngFor="let parent of parents | filterParents:searchText">
@@ -56,7 +62,7 @@
     </div>
 
     <div class="student-actions">
-      <button class="action-button view">
+      <button class="action-button view" (click)="seeDetailsofParent(parent)">
         <i class="fas fa-eye"></i> Voir Détails
       </button>
       <button class="action-button edit">

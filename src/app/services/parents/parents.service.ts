@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Parent } from '../../models/parent';
-import {map, Observable, of} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Student} from '../../models/student';
 
 @Injectable({
   providedIn: 'root'
@@ -48,10 +47,9 @@ export class ParentsService {
     this.parents.push(parent);
   }
 
-
-
-
-
+  seeDetailsOfParent(id : string){
+    return this.parents.find( parent => id === parent.uid);
+  }
 
 
 }
