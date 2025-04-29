@@ -55,4 +55,8 @@ export class StudentService {
     this.students.push(student);
   }
 
+  seeStudentDetails(id:string){
+  return  this.students.find(student => id === student.id);
+  }
+
 }

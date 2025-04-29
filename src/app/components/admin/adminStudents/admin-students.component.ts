@@ -5,6 +5,7 @@ import {StudentService} from '../../../services/student/student.service';
 import {Student} from '../../../models/student';
 import {AdminAddStudentsComponent} from './admin-add-students/admin-add-students.component';
 import {FilterStudentPipe} from '../../../pipes/student/filter-student.pipe';
+import {SeeDetailsStudentComponent} from './see-details-student/see-details-student.component';
 @Component({
   selector: 'app-admin-students',
   imports: [
@@ -14,7 +15,7 @@ import {FilterStudentPipe} from '../../../pipes/student/filter-student.pipe';
     ReactiveFormsModule,
     FormsModule,
     FilterStudentPipe,
-
+    SeeDetailsStudentComponent
   ],
   templateUrl: './admin-students.component.html',
   styleUrl: './admin-students.component.css',
@@ -23,7 +24,9 @@ import {FilterStudentPipe} from '../../../pipes/student/filter-student.pipe';
 export class AdminStudentsComponent implements OnInit{
    students:Student[] = [];
    searchText :string ='';
-   showModal: boolean = false;
+   showAddModal: boolean = false;
+   showDetailsModal: boolean = false;
+   selectedStudentId: string ='';
   constructor(private studentService : StudentService) {
   }
   ngOnInit() {
@@ -41,7 +44,13 @@ export class AdminStudentsComponent implements OnInit{
 
   addStudent(student: Student){
     this.studentService.addStudent(student);
-    this.showModal=false;
+    this.showAddModal=false;
+  }
+
+
+  seeStudentDetails(student:Student){
+    this.selectedStudentId = student.id;
+    this.showDetailsModal = true;
   }
 
 }

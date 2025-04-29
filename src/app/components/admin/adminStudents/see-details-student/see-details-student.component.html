@@ -1,0 +1,42 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Détails d'eleve</h2>
+      <button class="close-button" (click)="closeModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="modal-body" *ngIf="student">
+      <div class="student-avatar">
+        <img src="assets/images/avatar.jpg" alt="Avatar" />
+      </div>
+
+      <div class="student-info">
+        <h3>{{ student.name }}</h3>
+
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <span>Grade : {{ student.schoolGrade }}</span>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <span>anniversaire : {{ student.birthDate }}</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <span>mathLevel : {{ student.mathLevel }}</span>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="action-button cancel" (click)="closeModal()">Fermer</button>
+    </div>
+  </div>
+</div>

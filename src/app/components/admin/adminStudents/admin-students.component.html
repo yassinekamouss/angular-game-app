@@ -21,16 +21,22 @@
       <input type="text" placeholder="Rechercher par nom ou grade..." [(ngModel)]="searchText" />
     </div>
     <div class="filter-box">
-      <button class="action-button view" (click)="showModal = true">+ Ajouter un etudiant</button>
+      <button class="action-button view" (click)="showAddModal = true">+ Ajouter un etudiant</button>
     </div>
   </div>
 
   <!-- Modal Component -->
   <app-admin-add-students
-    *ngIf="showModal"
+    *ngIf="showAddModal"
     (ajouter)="addStudent($event)"
-    (fermer)="showModal = false">
+    (fermer)="showAddModal = false">
   </app-admin-add-students>
+
+  <app-see-details-student
+    *ngIf="showDetailsModal"
+    [studentId]="selectedStudentId"
+    (fermer)="showDetailsModal = false">
+  </app-see-details-student>
 
   <!-- Prof Grid -->
   <div class="students-grid">
@@ -56,7 +62,7 @@
 
       </div>
       <div class="student-actions">
-        <button class="action-button view">
+        <button class="action-button view" (click)="seeStudentDetails(student)">
           <i class="fas fa-eye"></i>
           Voir le profil
         </button>

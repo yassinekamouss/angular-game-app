@@ -21,7 +21,6 @@ export class SeeDetailsParentComponent implements OnInit {
   ngOnInit(): void {
     if (this.parentId) {
       this.parent = this.parentsService.seeDetailsOfParent(this.parentId);
-      console.log('Parent details:', this.parent);
     }
   }
 
